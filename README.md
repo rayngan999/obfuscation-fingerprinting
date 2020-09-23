@@ -24,14 +24,15 @@
 
 ## Dynamic Analysis
 
-### Conversion to JSON
-The code is designed to work with JSON representation of OpenWPM's sqlite table. As a first step, please run **convert_sql_tables_to_json.py** to convert the data needed by FP-Inspector to json representation. 
-
-convert_sql_tables_to_json.py takes input:
-1. db_addr: address of OpenWPM's sqlite database.
-2. analysis_directory: it is kind of a parent directory, which can have other data associated to the JSON representation.
-3. data_directory: directory where you want to store the json representation.
-4. file_name: name of the JSON file. Please note that several files will be created based on the partition size. 
-5. input_partition_size: number of script executions you want to keep in each partition. Default is 10K
-
-##
+1. Conversion to JSON: The code is designed to work with JSON representation of OpenWPM's sqlite table. As a first step, please run convert_sql_tables_to_json.py to convert the data needed by FP-Inspector to json representation. convert_sql_tables_to_json.py takes input:
+    1. db_addr: address of OpenWPM's sqlite database.
+    2. analysis_directory: it is kind of a parent directory, which can have other data associated to the JSON representation.
+    3. data_directory: directory where you want to store the json representation.
+    4. file_name: name of the JSON file. Please note that several files will be created based on the partition size. 
+    5. input_partition_size: number of script executions you want to keep in each partition. Default is 10K
+2. Run extract_features_from_properties_training.py to extract features from the partitioned data created in the previous step. It takes input following:     
+    1. data_directory: path to partitioned data
+    2. dynamic_feature_mapping_file: copy this file in the data_directory that you gave as a first argument. The file is present as: dynamic_feature_mapping.json
+    3. js_api_count_file: copy this file in the data_directory that you gave as a first argument. The file is present as: maximum_number_of_api_calls.json
+3. Test the arff generated in the last step with the dynamic model. Model is present as: dynamic_1K_iteration_4.model. I used WEKA to train the model and used J48
+ 
