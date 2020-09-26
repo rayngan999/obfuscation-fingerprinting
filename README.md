@@ -34,5 +34,6 @@
     1. data_directory: path to partitioned data
     2. dynamic_feature_mapping_file: copy this file in the data_directory that you gave as a first argument. The file is present as: dynamic_feature_mapping.json
     3. js_api_count_file: copy this file in the data_directory that you gave as a first argument. The file is present as: maximum_number_of_api_calls.json
+    4. features_integers_mapping: copy this file in the data_directory that you gave as a first argument. The file is present as: features_integers_mapping.json
 3. Test the arff generated in the last step with the dynamic model. Model is present as: dynamic_1K_iteration_4.model. I used WEKA to train the model and used J48
  
